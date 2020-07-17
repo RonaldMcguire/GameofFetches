@@ -34,13 +34,23 @@ class Lannister extends React.Component {
         })
     }
 
-  
+    async getfifthData(){
+        const muffin = await axios.get("http://www.anapioficeandfire.com/api/characters/901")
+        const answerFive = muffin.data.aliases[1]
+        console.log(answerFive);
+        this.setState({
+            answer5: answerFive
+        })
+    }
+
+
 
 
 
 
     componentDidMount() {
         this.getfourthData();
+        this.getfifthData();
 
         this.getinfo();
     }
@@ -63,6 +73,9 @@ class Lannister extends React.Component {
                 }
                 <h1>What is the second seat of House Baratheon?</h1>
                 <h2>{ this.state.answer4 }</h2>
+
+                <h1>What is Robert Baratheon's second alias?</h1>
+                <h2>{ this.state.answer5 }</h2>
 
 
             </div>
