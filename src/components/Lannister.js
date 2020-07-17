@@ -43,7 +43,13 @@ class Lannister extends React.Component {
         })
     }
 
-
+    async getsixthData(){
+        const founder = await axios.get("https://www.anapioficeandfire.com/api/characters/209")
+        const a = founder.data.name
+        this.setState({
+            answer6: a
+        })
+    }
 
 
 
@@ -51,7 +57,7 @@ class Lannister extends React.Component {
     componentDidMount() {
         this.getfourthData();
         this.getfifthData();
-
+        this.getsixthData();
         this.getinfo();
     }
     checkNull(){
@@ -77,6 +83,8 @@ class Lannister extends React.Component {
                 <h1>What is Robert Baratheon's second alias?</h1>
                 <h2>{ this.state.answer5 }</h2>
 
+                <h1>What's the name of the founder of House Stark?</h1>
+                <h2>{ this.state.answer6 }</h2>
 
             </div>
         )
