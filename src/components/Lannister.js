@@ -8,6 +8,9 @@ class Lannister extends React.Component {
         this.state = {
             info: [],
             coatOfArms: null,
+            answer4: " ",
+            answer5: " ",
+            answer6: " ",
         }
     }
 
@@ -22,9 +25,23 @@ class Lannister extends React.Component {
         }
     }
 
+    async getfourthData(){
+        const res = await axios.get("http://www.anapioficeandfire.com/api/houses/17")
+        const answerFour = res.data.seats
+        console.log(answerFour);
+        this.setState({
+            answer4: answerFour
+        })
+    }
+
+  
+
+
 
 
     componentDidMount() {
+        this.getfourthData();
+
         this.getinfo();
     }
     checkNull(){
@@ -44,6 +61,9 @@ class Lannister extends React.Component {
                 {
                     this.checkNull()
                 }
+                <h1>What is the second seat of House Baratheon?</h1>
+                <h2>{ this.state.answer4 }</h2>
+
 
             </div>
         )
